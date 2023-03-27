@@ -1,0 +1,204 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root {
+    --div-x-offset: 0px;
+    --div-y-offset: 0px;
+    --circle-scale: 1000;
+    --dot-x-offset: -100px;
+    --dot-y-offset: -100px;
+    --primary-color: hsl(157, 53%, 51%);
+    --secondary-color: hsl(9, 53%, 51%);
+    --tertiary-color: hsl(230, 53%, 51%);
+    --light-color: white;
+    --dark-color: black;
+    --background-color-one: black;
+    --background-color-two: white;
+
+}
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#home-container {
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    overflow: hidden;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+h1 {
+    color: white;
+    transition: all 500ms ease;
+    cursor: pointer;
+}
+#expanded-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    width: 100%;
+    height: 100vh;
+    clip-path: circle(0px at var(--dot-x-offset) var(--dot-y-offset));
+    z-index: 5;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    pointer-events:none;
+    
+}
+#expanded-content[data-delayedtransition="true"] {
+    transition: clip-path 800ms ease-in;
+}
+#expanded-content[data-delayedtransition="fast"] {
+    transition: clip-path 200ms ease-in-out;
+}
+#expanded-content[data-peek="true"] {
+    clip-path: circle(1rem at var(--dot-x-offset) var(--dot-y-offset));
+}
+#expanded-content[data-visible="true"] {
+    clip-path: circle(calc(2px * var(--circle-scale)) at var(--dot-x-offset) var(--dot-y-offset));
+    pointer-events: auto;
+}
+.square {
+    width: 500px;
+    height: 500px;
+    background-color: red;
+}
+#dots-container {
+    z-index: 2;
+}
+.flying-dot {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 100%;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+}
+#zoomed-content-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    opacity: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--tertiary-color);
+}
+#zoomed-content-container[data-status="active"] {
+    opacity: 100;
+}
+
+h1 {
+    display: inline-block;
+    white-space: nowrap;
+}
+#home-container {
+    transition: transform 1000ms ease-in;
+}
+#home-container[data-zoomed="true"] {
+    transform: translate(var(--div-x-offset), var(--div-y-offset)) scale(150);
+}
+#home-container[data-status="inactive"] {
+    pointer-events: none;
+    display: none;
+}
+#zoomed-div {
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    color: white;
+    transition: transform 1000ms linear;
+    transform: scale(0);
+    z-index: 5;
+}
+#zoomed-div[data-status="active"] {
+    transform: scale(1);
+}
+svg {
+    height: 0.8em;
+    width: 0.8em;
+    transform: translateY(20%);
+}
+svg > circle{
+    fill:var(--tertiary-color);
+}
+
+
+#zoomed-grid {
+    display: grid;
+    padding: 10rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: (2, 1fr);
+    gap: 2rem;
+    width: 100%;
+    height: 100%;
+    justify-items: center;
+    align-items: center;
+    
+}
+
+.grid-item {
+    width: 60%;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    vertical-align: middle;
+    text-align: center;
+}
+.grid-item:nth-child(1) {
+    background-color: var(--dark-color);
+    width: 50%;
+}
+.grid-item:nth-child(2) {
+    background-color: var(--light-color);
+    width: 65%
+}
+.grid-item:nth-child(3) {
+    background-color: var(--primary-color);
+    
+}
+.grid-item:nth-child(4) {
+    background-color: var(--secondary-color);
+    width: 55%
+}
+
+.arriving-dot {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 100%;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: transform 1000ms ease-in-out;
+}
+.arriving-dot[data-status="inactive"] {
+    transform: translate(-50%, -50%) scale(0);
+}
+
+
+
+@keyframes dot-drift {
+    0% {transform: translate(0, 0)}
+    30% {transform: translate(25%, 25%)}
+    60% {transform: translate(-36%, -10%)}
+    100% {transform: translate(0, 0)}
+}
