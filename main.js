@@ -1,4 +1,4 @@
-function handleClick() {
+function handleExpansion() {
     const iElement = document.getElementById("i-container");
     const iRect = iElement.getBoundingClientRect();
     var deltaX = iRect.x + iRect.width / 1.8;
@@ -29,7 +29,7 @@ function peek() {
     const iRect = iElement.getBoundingClientRect();
     var deltaX = iRect.x + iRect.width / 1.8;
     var deltaY = iRect.y + iRect.height / 4;
-    document.documentElement.style.setProperty("--dot-x-offset", deltaX -2 + "px");
+    document.documentElement.style.setProperty("--dot-x-offset", deltaX -1 + "px");
     document.documentElement.style.setProperty("--dot-y-offset", deltaY -2 + "px");
     
     setTimeout(() => {

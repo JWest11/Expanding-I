@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="main.css" rel="stylesheet">
     <script src="main.js" defer="true"></script>
+    <script src="zooming.js" defer="true"></script>
     <title>Document</title>
 </head>
 <body>
     <div data-status="active" data-zoomed="false" id="home-container">
-        <h1 onmouseleave="unpeek()" onmouseover="peek()" onclick="handleClick()">H<span id="i-container">i</span> there</h1>
+        <h1 onmouseleave="unpeek()" onmouseover="peek()" onclick="handleExpansion()">H<span id="i-container"><i>i</i></span> there</h1>
         <h1 onclick="zoomIn()" id="zoom-circle">Zo<svg viewBox="0 0 100 100"><circle cx="50%" cy="50%" r="50%"/></svg>m</h1>
     
     
@@ -19,7 +20,6 @@
             <div class="square"></div>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis at mollitia recusandae odit quasi officiis doloribus natus dolor ratione similique rem, dignissimos vel facere laborum, tenetur corporis ipsa dolorum? Qui?</p>
             <button onclick="turnOff()">Back</button>
-            <button onclick="beginAnimations()">Animate</button>
         </div>
         
     </div>
