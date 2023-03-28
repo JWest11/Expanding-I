@@ -5,30 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="main.css" rel="stylesheet">
-    <script src="main.js" defer="true"></script>
-    <script src="zooming.js" defer="true"></script>
+    <script src="oZooming.js" defer="true"></script>
+    <script src="iExpanding.js" defer="true"></script>
     <title>Document</title>
 </head>
 <body>
     <div data-status="active" data-zoomed="false" id="home-container">
-        <h1 onmouseleave="unpeek()" onmouseover="peek()" onclick="handleExpansion()">H<span id="i-container"><i>i</i></span> there</h1>
-        <h1 onclick="zoomIn()" id="zoom-circle">Zo<svg viewBox="0 0 100 100"><circle cx="50%" cy="50%" r="50%"/></svg>m</h1>
+        <h1 onmouseleave="unPeekIExpansion()" onmouseover="peekIExpansion()" onclick="activateIExpansion()">H<span id="i-container"><i>i</i></span> there</h1>
+        <h1 onclick="activateOZoomIn()" id="zoom-circle">Zo<svg id="zoom-svg-o" viewBox="0 0 100 100"><circle cx="50%" cy="50%" r="50%"/></svg>m</h1>
     
     
         <div data-delayedtransition="false" data-visible="false" id="expanded-content">
             <h2>This is some content</h2>
             <div class="square"></div>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis at mollitia recusandae odit quasi officiis doloribus natus dolor ratione similique rem, dignissimos vel facere laborum, tenetur corporis ipsa dolorum? Qui?</p>
-            <button onclick="turnOff()">Back</button>
+            <button onclick="deactivateIExpansion()">Back</button>
         </div>
         
     </div>
     <div data-status="inactive" id="zoomed-content-container">
-        <div id="zoomed-grid">
-            <div style="transform: scale(0)" data-delayedtransition="false" data-grid-item-index="0" class="grid-item"></div>
-            <div style="transform: scale(0)" data-delayedtransition="false" data-grid-item-index="1" class="grid-item"></div>
-            <div style="transform: scale(0)" data-delayedtransition="false" data-grid-item-index="2" class="grid-item"></div>
-            <div style="transform: scale(0)" data-delayedtransition="false" data-grid-item-index="3" class="grid-item"></div>
+        <div id="zoomed-grid" data-status="inactive">
+            <div data-status="inactive" data-grid-item-index="0" class="grid-item"></div>
+            <div data-status="inactive" data-grid-item-index="1" class="grid-item"></div>
+            <div data-status="inactive" data-grid-item-index="2" class="grid-item"></div>
+            <div data-status="inactive" data-grid-item-index="3" class="grid-item"></div>
         </div>
     </div>
     <div id="dots-container">

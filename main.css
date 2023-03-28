@@ -16,6 +16,7 @@
     --dark-color: black;
     --background-color-one: black;
     --background-color-two: white;
+    --o-zoom-factor: 1;
 
 }
 body {
@@ -115,6 +116,7 @@ h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
+    z-index:6;
 }
 #zoomed-content-container {
     position: absolute;
@@ -137,7 +139,7 @@ h1 {
     transition: transform 1000ms ease-in;
 }
 #home-container[data-zoomed="true"] {
-    transform: translate(var(--div-x-offset), var(--div-y-offset)) scale(150);
+    transform: translate(var(--div-x-offset), var(--div-y-offset)) scale(var(--o-zoom-factor));
 }
 #home-container[data-status="inactive"] {
     pointer-events: none;
@@ -177,7 +179,11 @@ svg > circle{
     height: 100%;
     justify-items: center;
     align-items: center;
-    
+    transition: transform 1000ms cubic-bezier(.99,.03,.94,.6);
+    z-index: 100;
+}
+#zoomed-grid[data-status="inactive"] {
+    transform: scale(0);
 }
 
 .grid-item {
@@ -186,6 +192,7 @@ svg > circle{
     border-radius: 100%;
     vertical-align: middle;
     text-align: center;
+    z-index: 100;
 }
 .grid-item:nth-child(1) {
     background-color: var(--dark-color);
@@ -212,7 +219,8 @@ svg > circle{
     position: absolute;
     top: 50%;
     left: 50%;
-    transition: transform 1000ms ease-in-out;
+    transition: transform 1000ms cubic-bezier(.99,.03,.94,.6);
+    z-index: 6;
 }
 .arriving-dot[data-status="inactive"] {
     transform: translate(-50%, -50%) scale(0);
