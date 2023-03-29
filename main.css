@@ -17,6 +17,7 @@
     --background-color-one: black;
     --background-color-two: white;
     --o-zoom-factor: 1;
+    --growing-polygon: polygon(0 0, 0 0, 0 0, 0 0);
 
 }
 body {
@@ -51,7 +52,7 @@ h1 {
     background-color: white;
     width: 100%;
     height: 100vh;
-    clip-path: circle(2px at var(--dot-x-offset) var(--dot-y-offset));
+    clip-path: circle(0 at var(--dot-x-offset) var(--dot-y-offset));
     z-index: 5;
 
     display: flex;
@@ -74,30 +75,12 @@ h1 {
     clip-path: circle(calc(2px * var(--circle-scale)) at var(--dot-x-offset) var(--dot-y-offset));
     pointer-events: auto;
 }
-#i-container {
-    position: relative;
-    display: inline-block;
-}
-#i-container::after {
-    position: absolute;
-    display: block;
-    content: "i";
-    top: 0;
-    left: 0;
-    clip-path: inset(30% 0 0 0);
-}
-#i-container::before {
-    position: absolute;
-    display: block;
-    content: "i";
-    top: 0;
-    left: 0;
-    clip-path: inset(0 0 70% 0);
-    color: var(--secondary-color);
-}
-#i-container i {
-    font: inherit;
-    opacity: 0;
+svg#expanding-i {
+    height: 0.8em;
+    width: auto;
+    margin: 2px;
+    margin-bottom: 0;
+    transform: translateY(1px)
 }
 .square {
     width: 500px;
@@ -159,12 +142,12 @@ h1 {
 #zoomed-div[data-status="active"] {
     transform: scale(1);
 }
-svg {
+svg#zoom-svg-o {
     height: 0.8em;
     width: 0.8em;
     transform: translateY(20%);
 }
-svg > circle{
+svg#zoom-svg-o > circle{
     fill:var(--tertiary-color);
 }
 
@@ -232,11 +215,18 @@ svg > circle{
     width: 100%;
     height: 100%;
     background-color: aquamarine;
-    clip-path: polygon()
-
+    clip-path: var(--growing-polygon);
 }
-#underline-h1 {
-    position: relative;
+#growing-content[data-transition="fast"] {
+    transition: clip-path 300ms ease-in;
+}
+#growing-content[data-transition="slow"] {
+    transition: clip-path 700ms ease-in;
+}
+#underline-h1[data-clickable="false"] {
+    pointer-events: none;
+}
+#matrixing-h1 {
 }
 
 
