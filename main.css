@@ -225,6 +225,19 @@ svg > circle{
 .arriving-dot[data-status="inactive"] {
     transform: translate(-50%, -50%) scale(0);
 }
+#growing-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: aquamarine;
+    clip-path: polygon()
+
+}
+#underline-h1 {
+    position: relative;
+}
 
 
 

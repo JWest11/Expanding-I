@@ -60,8 +60,7 @@ function beginZoomInArrival() {
     }, 200)
     setTimeout(() => {
         activateMainDotDrift();
-        activateBackgroundDotDrift();
-    }, 1300);
+    }, 1100);
 }
 
 function activateZoomedContent() {
@@ -98,32 +97,28 @@ function activateMainDotDrift() {
 function activateBackgroundDotArrival() {
     const arrivingDots = document.querySelectorAll(".arriving-dot");
     arrivingDots.forEach(dot => {
-        let scaleFactor = Math.random() * 2;            
+        let scaleFactor = Math.random();            
         let startingX = Math.random()  * window.innerWidth - window.innerWidth /2;
         let startingY = Math.random() * window.innerHeight - window.innerHeight /2;
         dot.dataset.status = "active";
         setTimeout(() => {
             dot.style.transform = `translate(${startingX}px, ${startingY}px) scale(${scaleFactor})`
         }, 100)
-    })
-}
-
-function activateBackgroundDotDrift() {
-    const arrivingDots = document.querySelectorAll(".arriving-dot");
-    arrivingDots.forEach(dot => {
-        let easingFunction = "ease-in-out"
-        let keyframe = [
-            {transform: `translate(${startingX}px, ${startingY}px) scale(${scaleFactor})`, easing: easingFunction},
-            {transform: `translate(${scaleBasedDelta(scaleFactor, startingX)}px, ${scaleBasedDelta(scaleFactor, startingY)}px) scale(${scaleFactor})`, easing: easingFunction},
-            {transform: `translate(${scaleBasedDelta(scaleFactor, startingX)}px, ${scaleBasedDelta(scaleFactor, startingY)}px) scale(${scaleFactor})`, easing: easingFunction},
-            {transform: `translate(${scaleBasedDelta(scaleFactor, startingX)}px, ${scaleBasedDelta(scaleFactor, startingY)}px) scale(${scaleFactor})`, easing: easingFunction},
-            {transform: `translate(${startingX}px, ${startingY}px) scale(${scaleFactor})`, easing: easingFunction},
-        ]
-        let timing = {
-            duration: Math.random() * 10000 + 15000,
-            iterations: Infinity
-        }
-        dot.animate(keyframe, timing);
+        setTimeout(() => {
+            let easingFunction = "ease-in-out"
+            let keyframe = [
+                {transform: `translate(${startingX}px, ${startingY}px) scale(${scaleFactor})`, easing: easingFunction},
+                {transform: `translate(${scaleBasedDelta(scaleFactor, startingX)}px, ${scaleBasedDelta(scaleFactor, startingY)}px) scale(${scaleFactor})`, easing: easingFunction},
+                {transform: `translate(${scaleBasedDelta(scaleFactor, startingX)}px, ${scaleBasedDelta(scaleFactor, startingY)}px) scale(${scaleFactor})`, easing: easingFunction},
+                {transform: `translate(${scaleBasedDelta(scaleFactor, startingX)}px, ${scaleBasedDelta(scaleFactor, startingY)}px) scale(${scaleFactor})`, easing: easingFunction},
+                {transform: `translate(${startingX}px, ${startingY}px) scale(${scaleFactor})`, easing: easingFunction},
+            ]
+            let timing = {
+                duration: Math.random() * 10000 + 15000,
+                iterations: Infinity
+            }
+            dot.animate(keyframe, timing);
+        }, 1100)
     })
 }
 
@@ -132,7 +127,7 @@ function generatePercentFifty() {
 }
 
 function scaleBasedDelta(scaleFactor, startValue) {
-    return Math.random() * 50 * scaleFactor + startValue;
+    return Math.random() * 50 * Number(scaleFactor) + Number(startValue);
 }
 
 function randomHundredIncrement(incrementCount) {

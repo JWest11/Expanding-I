@@ -13,7 +13,7 @@
     <div data-status="active" data-zoomed="false" id="home-container">
         <h1 onmouseleave="unPeekIExpansion()" onmouseover="peekIExpansion()" onclick="activateIExpansion()">H<span id="i-container"><i>i</i></span> there</h1>
         <h1 onclick="activateOZoomIn()" id="zoom-circle">Zo<svg id="zoom-svg-o" viewBox="0 0 100 100"><circle cx="50%" cy="50%" r="50%"/></svg>m</h1>
-    
+        <h1 id="underline-h1">Underline<span id="underline-span"></span></h1>
     
         <div data-delayedtransition="false" data-visible="false" id="expanded-content">
             <h2>This is some content</h2>
@@ -23,6 +23,7 @@
         </div>
         
     </div>
+    <div id="growing-content"></div>
     <div data-status="inactive" id="zoomed-content-container">
         <div id="zoomed-grid" data-status="inactive">
             <div data-status="inactive" data-grid-item-index="0" class="grid-item"></div>
