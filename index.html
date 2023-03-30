@@ -8,6 +8,7 @@
     <script src="oZooming.js" defer="true"></script>
     <script src="iExpanding.js" defer="true"></script>
     <script src="growingUnderline.js" defer="true"></script>
+    <script src="matrix.js" defer="true"></script>
     <title>Document</title>
 </head>
 <body>
@@ -27,8 +28,9 @@
             </svg> there</h1>
         <h1 onclick="activateOZoomIn()" id="zoom-circle">Zo<svg id="zoom-svg-o" viewBox="0 0 100 100"><circle cx="50%" cy="50%" r="50%"/></svg>m</h1>
         <h1 data-clickable="true" onclick="activateGrowingContent()" onmouseleave="unPeekUnderline()" onmouseover="peekUnderline()" id="underline-h1">Underline</h1>
-        <h1 id="matrixing-h1">Matrix</h1>
+        <h1 onclick="beginMatrix()" id="matrixing-h1">Matrix</h1>
     </div>
+    <div id="matrix-content"></div>
     <div data-delayedtransition="false" data-visible="false" id="expanded-content">
         <h2>This is some content</h2>
         <div class="square"></div>

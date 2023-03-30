@@ -227,6 +227,13 @@ svg#zoom-svg-o > circle{
     pointer-events: none;
 }
 #matrixing-h1 {
+    transition: all 400ms ease-in;
+}
+#matrix-content {
+    background-color: white;
+    position: absolute;
+    transition: all 400ms ease-in;
+
 }
 
 
