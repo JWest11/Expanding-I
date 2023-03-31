@@ -21,6 +21,7 @@ function beginMatrix() {
         const y0 = newRect.top;
         const x2 = newRect.right;
         const y2 = newRect.bottom;
+        matrixContent.style.clipPath = `polygon(0% 0%, 0% 10%, 100% 100%, 100% 90%)`;
         
     }, 1000)
     
