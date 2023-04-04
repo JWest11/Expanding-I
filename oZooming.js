@@ -32,6 +32,7 @@ function playFlyingDotAnimation(dot) {
 }
 
 function activateOZoomIn() {
+    document.getElementById("home-container").dataset.status = "inactive";
     let iElement = document.querySelector("#zoom-circle svg");
     let iRect = iElement.getBoundingClientRect();
     let centerX = window.innerWidth / 2;
@@ -47,7 +48,7 @@ function activateOZoomIn() {
     document.documentElement.style.setProperty("--o-zoom-factor", scaleFactor);
     const homeContainer = document.getElementById("home-container");
     homeContainer.dataset.zoomed = "true";
-    setTimeout(beginFlyingDotAnimation, 400);
+    setTimeout(beginFlyingDotAnimation, 100);
     setTimeout(beginZoomInArrival, 2000);
 }
 
